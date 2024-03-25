@@ -39,7 +39,7 @@ const Login = () => {
         setError(null);
       }
     }, 5000);
-  }, [error]); // Add dependency array to useEffect
+  }, [error]);
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -79,7 +79,6 @@ const Login = () => {
       return session;
     } catch (error) {
       setError("There was an error, please try again");
-      console.error("Login error:", error);
     }
   };
   return (
