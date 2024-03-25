@@ -1,6 +1,6 @@
-import { Button } from "@nextui-org/react";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { useAppDispatch } from "../../redux/hook.tsx";
+import {Button, User} from "@nextui-org/react";
+import { Dispatch, SetStateAction, useState } from "react";
+import {useAppDispatch, useAppSelector} from "../../redux/hook.tsx";
 import { useLogoutUser } from "../../lib/react-query/queries&Mutations.tsx";
 import { logoutUser } from "../../redux/userSlice.tsx";
 import { useNavigate } from "react-router";
@@ -43,10 +43,10 @@ const bottomBarMenuVariant = {
 };
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [showDivSpans, setShowDivSpans] = useState(window.innerWidth < 700);
   const { mutateAsync: logout } = useLogoutUser();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const user = useAppSelector(state => state.user)
   const handleLogout = async () => {
     try {
       await logout();
@@ -58,28 +58,14 @@ const Navbar = () => {
     }
   };
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 700) {
-        setShowDivSpans(true);
-      } else {
-        setShowDivSpans(false);
-      }
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
     <nav className="border-b relative border-b-[#2E2E2E] p-2">
       <div className="flex items-center mx-auto justify-between w-[90%]">
         <div className="flex items-center gap-7">
-          {showDivSpans && (
+          {/*{showDivSpans && (*/}
             <span
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="flex flex-col gap-1 cursor-pointer"
+              className=" flex md:hidden flex-col gap-1 cursor-pointer"
             >
               <motion.div
                 className="w-[20px] bg-white h-[2px]"
@@ -100,11 +86,14 @@ const Navbar = () => {
                 animate={isMenuOpen ? "animate" : ""}
               />
             </span>
-          )}
+           {/*)}*/}
 
           <h1 className="font-[600] text-[30px]">Jotify</h1>
         </div>
-        <div>
+        <div className='flex items-center gap-5'>
+          <span className='md:flex hidden'>
+          <User name={user.name} description={`@${user.username}`} classNames={{name: "font-[300]", description: "font-[600]"}} avatarProps={{src: user.profilePic}}/>
+          </span>
           <Button
             onClick={handleLogout}
             size="sm"
@@ -114,7 +103,7 @@ const Navbar = () => {
           </Button>
         </div>
       </div>
-      {isMenuOpen && showDivSpans && (
+      {isMenuOpen && (
         <div className="absolute left-6 top-[70px] z-20 w-[90%] bg-[#2E2E2E] p-2 rounded-lg">
           <div className="mb-6">
             <PopoverContentComponent />

@@ -200,12 +200,12 @@ const Note = () => {
               </Button>
             )}
         </div>
-        <div className="flex flex-col">
-          <textarea
-            className="w-[90%] bg-transparent mt-5 focus:outline-none  resize-none"
-            value={textareaContent}
-            onChange={handleContentChange}
-          />
+        <div className="flex pb-5  flex-col">
+    <textarea
+        className="w-full h-[76vh] bg-transparent mt-5 p-3 focus:outline-none resize-none"
+        value={textareaContent}
+        onChange={handleContentChange}
+    />
         </div>
       </>
     </section>
