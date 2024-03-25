@@ -1,30 +1,14 @@
-# React + TypeScript + Vite
+# Notes React Vite Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React application built using Vite for fast development and optimized builds. It provides a simple note-taking interface for users with the added feature of categorizing notes. The application utilizes Appwrite for user authentication, signup, and login functionalities. It also leverages NextUI for UI components, Tanstack Query for efficient data fetching, and Redux for state management.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- User authentication with Appwrite
+- User signup and login
+- Create, read, update, and delete notes
+- Categorize notes into categories like health, finance, hobbies, etc.
+- Filter notes based on categories
+- Simple and intuitive UI with NextUI components
+- Efficient data fetching with Tanstack Query
+- State management with Redux
