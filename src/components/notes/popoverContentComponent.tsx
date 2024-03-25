@@ -6,14 +6,12 @@ import CreateNewNote from "./createNewNote.tsx";
 const PopoverContentComponent = () => {
   const { setCategoryValue } = useFilteredCategoryContext();
   const [selectedColour, setSelectedColour] = useState("#CCCCCC");
-  const [selectedCategory, setSelectedCategory] = useState("Default");
   const [selectCategory, setSelectCategory] = useState("Default");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
   const handleOnClick = async (colour: string, category: string) => {
     setSelectedColour(colour);
-    setSelectedCategory(category);
     setCategoryValue(category);
   };
   const handleSelectCategory = (colour: string, category: string) => {
@@ -30,7 +28,7 @@ const PopoverContentComponent = () => {
         content={content}
         setTitle={setTitle}
         setContent={setContent}
-        setSelectedCategory={setSelectedCategory}
+        setSelectedCategory={setSelectCategory}
         setSelectedColour={setSelectedColour}
         handleSelectCategory={handleSelectCategory}
       />
