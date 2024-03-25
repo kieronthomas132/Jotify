@@ -102,7 +102,7 @@ const Note = () => {
           notes?.length === 0 &&
           !isFetchingNotes &&
           !isFetchingNote ? (
-            <h1 className="text-[7vw]">you currently have no notes</h1>
+            <h1 className="text-[4vw]">you currently have no notes</h1>
           ) : (
             ""
           )}
