@@ -12,7 +12,7 @@ const PopoverContentComponent = () => {
 
   const handleOnClick = async (colour: string, category: string) => {
     setSelectedColour(colour);
-    setCategoryValue(category)
+    setCategoryValue(category);
   };
   const handleSelectCategory = (colour: string, category: string) => {
     setSelectedColour(colour);
